@@ -25,3 +25,12 @@ print(f"Diretorio: {diretorio}")
 print(f"Arquivo: {arquivo}")
 
 os.system("echo Programa finalizado!")
+
+arquivo = "main.py"
+nome_arquivo, extensao_arquivo = os.path.splitext(caminho)
+print(f"Nome do arquivo: {nome_arquivo}")
+print(f"Extensāo do arquivo: {extensao_arquivo}")
+
+print(os.path.abspath("."))
+print(os.path.basename(caminho))
+print(os.path.dirname(caminho))
