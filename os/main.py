@@ -24,4 +24,4 @@ diretorio,arquivo = os.path.split(caminho)
 print(f"Diretorio: {diretorio}")
 print(f"Arquivo: {arquivo}")
 
-os.system.echo("Programa finalizado!")
+os.system("echo Programa finalizado!")
