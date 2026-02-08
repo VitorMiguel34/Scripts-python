@@ -1,0 +1,31 @@
+import os
+from dotenv import load_dotenv
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from pathlib import Path
+
+load_dotenv()
+
+senha = os.getenv("senha")
+email = os.getenv("email")
+email_destinatario = os.getenv("email_destinatario")
+host = os.getenv("host")
+porta = os.getenv("porta")
+
+assunto_email = "Email teste"
+
+msg = MIMEMultipart()
+msg["from"] = email
+msg["to"] = email
+msg["subject"] = assunto_email
+
+texto_email = "Este é um email teste, enviado com python"
+msg.attach(MIMEText(texto_email))
+
+with smtplib.SMTP(host,porta) as server:
+    server.ehlo()
+    server.starttls()
+    server.login(email,senha)
+    server.send_message(msg)
+    print("Mensagem enviada com sucesso!")
