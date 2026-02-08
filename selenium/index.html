@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Site</title>
+    <style>
+        #form{
+            width: 200px;
+            height: 200px;
+            border: 5px solid black;
+            display: flex;
+            flex-direction: column;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo ao site</h1>
+    <form action="">
+        <fieldset id="form">
+            <legend>Cadastro do usuario</legend>
+            <label for="inputNome">Nome do usuario:</label>
+            <input type="text" id="inputNome" autocomplete="off"><br>
+            <label for="inputIdade">Idade do usuario:</label>
+            <input type="number" id="inputIdade" autocomplete="off"><br>
+            <button type="button" id="enviarDados">Enviar dados</button>
+        </fieldset>
+    </form>
+    <p>Resultado do login: </p><p id="resultadoLogin"></p>
+</body>
+<script>
+    document.getElementById("enviarDados").addEventListener("click", () => {enviarDados()})
+    function limparInputs(){
+        let inputs = ["inputNome","inputIdade"]
+        for(let input of inputs){
+            document.getElementById(input).value = ""
+        }
+    }
+    function enviarDados(e){
+        document.getElementById("resultadoLogin").innerText = "Sucesso"
+        limparInputs()
+    }
+</script>
+</html>
