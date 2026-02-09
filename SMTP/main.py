@@ -4,6 +4,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
+import string
+import datetime
 
 load_dotenv()
 
@@ -20,8 +22,18 @@ msg["from"] = email
 msg["to"] = email
 msg["subject"] = assunto_email
 
-texto_email = "Este é um email teste, enviado com python"
-msg.attach(MIMEText(texto_email))
+ROOT = Path(__file__).parent
+nome_arquivo = "email.txt"
+caminho_arquivo = os.path.join(ROOT,nome_arquivo)
+dados = dict(
+    nome="Victor",
+    data=datetime.datetime.strftime(datetime.date.today(),"%d/%m/%Y"),
+    remetente="Victor"
+)
+with open(caminho_arquivo,"r") as arquivo:
+    texto = arquivo.read()
+    template = string.Template(texto)
+    msg.attach(MIMEText(template.substitute(dados)))
 
 with smtplib.SMTP(host,porta) as server:
     server.ehlo()
