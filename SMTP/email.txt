@@ -1,5 +1,6 @@
-Ola $nome
+Olá, $destinatario,
 
-Estamos te enviando esse email em $data.
+$mensagem
 
-Atenciosamente, ${remetente}
+Atenciosamente,
+$remetente

@@ -19,17 +19,21 @@ assunto_email = "Email teste"
 
 msg = MIMEMultipart()
 msg["from"] = email
-msg["to"] = email
+msg["to"] = email_destinatario
 msg["subject"] = assunto_email
 
 ROOT = Path(__file__).parent
 nome_arquivo = "email.txt"
 caminho_arquivo = os.path.join(ROOT,nome_arquivo)
+
+mensagem = "Mensagem enviada com python!"
+
 dados = dict(
-    nome="Victor",
-    data=datetime.datetime.strftime(datetime.date.today(),"%d/%m/%Y"),
-    remetente="Victor"
+    destinatario="Victor Miguel",
+    mensagem=mensagem,
+    remetente="Victor Miguel"
 )
+
 with open(caminho_arquivo,"r") as arquivo:
     texto = arquivo.read()
     template = string.Template(texto)
