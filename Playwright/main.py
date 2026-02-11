@@ -7,6 +7,15 @@ with sync_playwright() as p:
     page = browser.new_page()
 
     page.goto(url)
-    print(page.title())
+    page.fill("#inputNome","Victor")
+    page.fill("#inputIdade", "16")
+    page.click("#enviarDados")
+
+    resultado_login = page.locator("#resultadoLogin").inner_text()
+    if resultado_login == "Sucesso":
+        print("login realizado com sucesso!")
+    else:
+        print("Falha ao logar")
+
     time.sleep(3)
     browser.close()
